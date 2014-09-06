@@ -5,3 +5,5 @@
 *.iws
 **/*.log
 flybook.iws
+build
+**/build
