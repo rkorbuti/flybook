@@ -1,0 +1,10 @@
+.gradle
+.idea/workspace.xml
+**/*.iml
+*.iml
+*.iws
+**/*.log
+flybook.iws
+**/build
+**/target
+target/*
