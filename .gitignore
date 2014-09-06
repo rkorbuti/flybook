@@ -5,6 +5,10 @@
 *.iws
 **/*.log
 flybook.iws
+<<<<<<< HEAD
 **/build
 **/target
 target/*
+=======
+**/build
+>>>>>>> 96931aa7d195b40809fe08790d893e2f10599592
