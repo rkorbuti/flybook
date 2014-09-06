@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c4137eb-63e6-47c3-84c1-792efcea7d7b" name="Default" comment="Removed idea config files and logs from source control&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flybook-grailsPlugins.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flybook.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flybook.ipr" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flybook.iws" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/stacktrace.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flybook.iws" afterPath="$PROJECT_DIR$/flybook.iws" />
     </list>
     <ignored path="flybook.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -435,12 +431,21 @@
       <updated>1408547321233</updated>
       <workItem from="1408547321827" duration="2197000" />
       <workItem from="1410033302973" duration="319000" />
-      <workItem from="1410033737676" duration="334000" />
+      <workItem from="1410033737676" duration="485000" />
     </task>
+    <task id="LOCAL-00001" summary="Removed idea config files and logs from source control&#10;">
+      <created>1410034078025</created>
+      <updated>1410034078025</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added *.iws to .gitignore&#10;">
+      <created>1410034218096</created>
+      <updated>1410034218096</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2850000" />
+    <option name="totallyTimeSpent" value="3001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -464,6 +469,7 @@
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -492,6 +498,9 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Removed idea config files and logs from source control&#10;" />
+    <MESSAGE value="Added *.iws to .gitignore&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added *.iws to .gitignore&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
