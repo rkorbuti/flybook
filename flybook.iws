@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c4137eb-63e6-47c3-84c1-792efcea7d7b" name="Default" comment="Removed idea config files and logs from source control&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flybook.iws" afterPath="$PROJECT_DIR$/flybook.iws" />
+    <list default="true" id="5c4137eb-63e6-47c3-84c1-792efcea7d7b" name="Default" comment="Added devDB under source control&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/flybook.iws" afterPath="" />
     </list>
     <ignored path="flybook.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -431,7 +431,7 @@
       <updated>1408547321233</updated>
       <workItem from="1408547321827" duration="2197000" />
       <workItem from="1410033302973" duration="319000" />
-      <workItem from="1410033737676" duration="485000" />
+      <workItem from="1410033737676" duration="610000" />
     </task>
     <task id="LOCAL-00001" summary="Removed idea config files and logs from source control&#10;">
       <created>1410034078025</created>
@@ -441,11 +441,19 @@
       <created>1410034218096</created>
       <updated>1410034218096</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added devDB under source control&#10;">
+      <created>1410034237133</created>
+      <updated>1410034237133</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added devDB under source control&#10;">
+      <created>1410034307273</created>
+      <updated>1410034307273</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3001000" />
+    <option name="totallyTimeSpent" value="3126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -500,7 +508,8 @@
     </option>
     <MESSAGE value="Removed idea config files and logs from source control&#10;" />
     <MESSAGE value="Added *.iws to .gitignore&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added *.iws to .gitignore&#10;" />
+    <MESSAGE value="Added devDB under source control&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added devDB under source control&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
