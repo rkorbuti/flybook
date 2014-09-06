@@ -4,3 +4,4 @@
 *.iml
 *.iws
 **/*.log
+flybook.iws
