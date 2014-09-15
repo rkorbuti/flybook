@@ -1,7 +1,9 @@
 package flybook
 
 
-
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.Method.GET
+import static groovyx.net.http.ContentType.JSON
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -99,6 +101,28 @@ class AirportController {
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
+        }
+    }
+
+    def request() {
+        def listOfAirports = [:]
+        Country country
+        City city
+        def http = new HTTPBuilder('http://www.ryanair.com')
+        http.get(path: '/en/api/2/forms/flight-booking-selector/') { resp, json ->
+            json.airports.each { listOfAirports.put(it.iataCode, [it.country.name, it.name]) }
+        }
+
+        for (code in listOfAirports.keySet()) {
+            country = Country.find(new Country(name: listOfAirports[code][0]))
+            if (country != null) {
+                city = new City(name: listOfAirports[code][1], country: country).save(flush: true)
+                new Airport(code: code, city: city).save(flush: true)
+            } else {
+                country = new Country(name: listOfAirports[code][0]).save(flush: true)
+                city = new City(name: listOfAirports[code][1], country: country).save(flush: true)
+                new Airport(code: code, city: city).save(flush: true)
+            }
         }
     }
 }
