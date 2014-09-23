@@ -10,6 +10,12 @@ class Flight {
     boolean enabled
 
     static constraints = {
+        airportFrom()
+        airportTo()
+        departureTime()
+        arrivalTime()
+        enabled()
+        price()
     }
 
 
