@@ -25,12 +25,12 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:flightInstance, action:'save']" >
+			<g:form url="[resource:flightInstance, action:'getFlights']" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:actionSubmit name="Get Flights" value="Get Flights" />
 				</fieldset>
 			</g:form>
 		</div>

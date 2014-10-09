@@ -25,7 +25,7 @@
 		<g:message code="flight.departureTime.label" default="Departure Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="departureTime" precision="day"  value="${flightInstance?.departureTime}"  />
+	<g:datePicker name="departureTime" precision="day"  value="${flightInstance?.departureTime}" relativeYears="[0..1]" />
 
 </div>
 
@@ -34,7 +34,7 @@
 		<g:message code="flight.arrivalTime.label" default="Arrival Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="arrivalTime" precision="day"  value="${flightInstance?.arrivalTime}"  />
+	<g:datePicker name="arrivalTime" precision="day"  value="${flightInstance?.arrivalTime}" relativeYears="[0..1]" />
 
 </div>
 

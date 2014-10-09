@@ -114,7 +114,7 @@ class AirportController {
         }
 
         for (code in listOfAirports.keySet()) {
-            country = Country.find(new Country(name: listOfAirports[code][0]))
+            country = Country.findByName(listOfAirports[code][0])
             if (country != null) {
                 city = new City(name: listOfAirports[code][1], country: country).save(flush: true)
                 new Airport(code: code, city: city).save(flush: true)

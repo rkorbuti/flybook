@@ -1,7 +1,9 @@
 package flybook
 
 
-
+import groovyx.net.http.HTTPBuilder
+import static groovyx.net.http.Method.GET
+import static groovyx.net.http.ContentType.JSON
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -19,7 +21,7 @@ class FlightController {
         respond flightInstance
     }
 
-    def create() {
+    def searchFlights() {
         respond new Flight(params)
     }
 
@@ -31,7 +33,7 @@ class FlightController {
         }
 
         if (flightInstance.hasErrors()) {
-            respond flightInstance.errors, view:'create'
+            respond flightInstance.errors, view:'searchFlights'
             return
         }
 
@@ -100,5 +102,17 @@ class FlightController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+
+    def getFlights() {
+        def listOfFlights = [ ]
+        def http = new HTTPBuilder('http://www.ryanair.com')
+        def from = Airport.get(params.airportFrom.id), to = Airport.get(params.airportTo.id)
+        def departure = params.departureTime.format("yyyy-MM-dd"), arrival = params.arrivalTime.format("yyyy-MM-dd"), prc = params.price
+        def path = '/en/api/2/flights/from/' + from.code + '/to/' + to.code + '/' + departure + '/' + arrival + '/outbound/cheapest-per-day/'
+        http.get(path: path) {resp, json ->
+            json.flights.each { listOfFlights << [it.dateFrom, it.dateTo, it.price.value + it.price.currencySymbol]}
+        }
+        [from: from, to: to, list: listOfFlights]
     }
 }
