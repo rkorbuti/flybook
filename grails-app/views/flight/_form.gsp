@@ -7,7 +7,7 @@
 		<g:message code="flight.airportFrom.label" default="Airport From" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="airportFrom" name="airportFrom.id" from="${flybook.Airport.list()}" optionKey="id" required="" value="${flightInstance?.airportFrom?.id}" class="many-to-one"/>
+	<g:select id="airportFrom" name="airportFrom.id" from="${flybook.Airport.list()}" optionKey="id" required="" value="${flightInstance?.airportFrom?.id}" noSelection="${['null': '']}" class="many-to-one"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="flight.airportTo.label" default="Airport To" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="airportTo" name="airportTo.id" from="${flybook.Airport.list()}" optionKey="id" required="" value="${flightInstance?.airportTo?.id}" class="many-to-one"/>
+	<g:select id="airportTo" name="airportTo.id" from="${flybook.Airport.list()}" optionKey="id" required="" value="${flightInstance?.airportTo?.id}" noSelection="${['null': '']}" class="many-to-one"/>
 
 </div>
 
