@@ -13,6 +13,11 @@
 </head>
 
 <body>
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+    </ul>
+</div>
 <table>
     <thead>
     <tr>
@@ -32,23 +37,44 @@
     </tr>
     </thead>
     <tbody>
-    <g:each in="${list}" status="i" var="flight">
-        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+        <g:if test="${to != null}">
+            <g:each in="${list}" status="i" var="flight">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td>${from}</td>
+                    <td><a href = ${flightUrl + flight[3]} target = "_blank">${from}</a></td>
 
-            <td>${to}</td>
+                    <td>${to}</td>
 
-            <td>${flight[0]}</td>
+                    <td>${flight[0]}</td>
 
-            <td>${flight[1]}</td>
+                    <td>${flight[1]}</td>
 
-            <td></td>
+                    <td></td>
 
-            <td>${flight[2]}</td>
+                    <td>${flight[2]}</td>
 
-        </tr>
-    </g:each>
+                </tr>
+            </g:each>
+        </g:if>
+        <g:else>
+            <g:each in="${list}" status="i" var="flight">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                    <td><a href = ${flight[4]} target = "_blank">${from}</a></td>
+
+                    <td>${flight[0]}</td>
+
+                    <td>${flight[1]}</td>
+
+                    <td>${flight[2]}</td>
+
+                    <td></td>
+
+                    <td>${flight[3]}</td>
+
+                </tr>
+            </g:each>
+        </g:else>
     </tbody>
 </table>
 </body>
