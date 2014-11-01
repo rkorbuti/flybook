@@ -106,13 +106,42 @@ class FlightController {
 
     def getFlights() {
         def listOfFlights = [ ]
-        def http = new HTTPBuilder('http://www.ryanair.com')
-        def from = Airport.get(params.airportFrom.id), to = Airport.get(params.airportTo.id)
-        def departure = params.departureTime.format("yyyy-MM-dd"), arrival = params.arrivalTime.format("yyyy-MM-dd"), prc = params.price
-        def path = '/en/api/2/flights/from/' + from.code + '/to/' + to.code + '/' + departure + '/' + arrival + '/outbound/cheapest-per-day/'
-        http.get(path: path) {resp, json ->
-            json.flights.each { listOfFlights << [it.dateFrom, it.dateTo, it.price.value + it.price.currencySymbol]}
+        def baseUrl = 'http://www.ryanair.com', http = new HTTPBuilder(baseUrl)
+        def from = (params.airportFrom.id != 'null') ? Airport.get(params.airportFrom.id) : null, to = (params.airportTo.id != 'null') ? Airport.get(params.airportTo.id) : null
+        def departure = params.departureTime.format("yyyy-MM-dd"), arrival = params.arrivalTime.format("yyyy-MM-dd"), prc = params.price, urlLink = ''
+
+        if (to == null) {
+            def path = '/en/api/2/flights/from/' + from.code + '/' + departure + '/' + arrival + '/' + prc + '/unique/'
+            http.get(path: path, query: [limit: 200, offset: 0]) {resp, json ->
+                json.flights.each {listOfFlights << [it.outbound.airportTo.name, it.outbound.dateFrom.toString().substring(0, 10) + " " + it.outbound.dateFrom.toString().substring(11, 16),
+                                                     it.outbound.dateTo.toString().substring(0, 10) + " " + it.outbound.dateTo.toString().substring(11, 16), it.outbound.price.value + it.outbound.price.currencySymbol,
+                                                     baseUrl + it.summary.flightViewUrl]}
+            }
         }
-        [from: from, to: to, list: listOfFlights]
+        //Getting Departure Time, Arrival Time and Price, formatting Departure Time and Arrival Time to be represented as "yyyy-MM-dd HH:mm"
+        else {
+            def path = '/en/api/2/flights/from/' + from.code + '/to/' + to.code + '/' + departure + '/' + arrival + '/outbound/cheapest-per-day/'
+            http.get(path: path) { resp, json ->
+                json.flights.each {
+                    if (it.price != null && Integer.parseInt(it.price.valueMainUnit) < Double.parseDouble(prc))
+                        listOfFlights << [it.dateFrom.toString().substring(0, 10) + " " + it.dateFrom.toString().substring(11, 16),
+                                          it.dateTo.toString().substring(0, 10) + " " + it.dateTo.toString().substring(11, 16), it.price.value + it.price.currencySymbol]
+                }
+            }
+
+            //Getting url link to flights booking page on www.ryanair.com
+            def pathForURL = '/en/api/2/flights/from/' + from.code + '/to/' + to.code + '/' + departure + '/' + arrival + '/' + prc + '/unique/'
+            http.get(path: pathForURL, query: [limit: 15, offset: 0]) { resp, json ->
+                urlLink = json.flights.summary.flightViewUrl
+            }
+            urlLink = baseUrl + urlLink[0].substring(0, urlLink[0].length() - 10)
+
+            //Adding to the listOfFlights <out date> value for using it in url link from application to flights booking page on www.ryanair.com
+            for (int i = 0; i < listOfFlights.size(); i++) {
+                listOfFlights[i] += listOfFlights[i][0].toString().substring(0, 10)
+            }
+        }
+        //passing parameters to getFlights view
+        [from: from, to: to, list: listOfFlights, flightUrl: urlLink]
     }
 }
